@@ -6,13 +6,20 @@ function loginRequest(data){
     console.log('datataa',data)
     return dispatch=>{
 dispatch(LoginRequest());
+
 return DB.auth.signInWithEmailAndPassword(data.email,data.password).then((sent)=>{
 var user = {
     uid : sent.uid,
     name : data.name
 }
+
 dispatch(LoginRequestSuccess(data))
+if(data.email=='haseeb@gmail.com'){
+    Actions.viewAllUserDetCon()
+}
+else{
 Actions.homeCon()
+}
 })
 
 

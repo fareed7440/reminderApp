@@ -1,23 +1,31 @@
 import React, { Component } from 'react'
-import { Container, Header, Content, Form, Item, Input, Label, Body, Button, Left, Title, Right, Icon, View } from 'native-base';
+import { Container, Header, Content, Form, Item, Input, Footer, FooterTab, Label, Body, Button, Left, Title, Right, Icon, View } from 'native-base';
 import { StyleSheet, Text, Image } from 'react-native';
 import { Actions } from 'react-native-router-flux';
-import DatePicker from 'react-native-datepicker'
+import DatePicker from 'react-native-datepicker';
+import firebase from 'firebase'
 class Home extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            date : new Date(),
+this.state = {
+            date: new Date(),
             yesterday: '',
             today: '',
             problems: '',
-           
-        }
 
+        }
+        this.logOut = this.logOut.bind(this);
         this.handleForm = this.handleForm.bind(this)
         this.handleInput = this.handleInput.bind(this)
     }
-
+    logOut() {
+        firebase.auth().signOut().then(function () {
+            console.log('Signed Out');
+            Actions.signupCon();
+        }, function (error) {
+            console.error('Sign Out Error', error);
+        });
+    }
     handleInput = (e) => {
         this.setState({
             value: e.target.value
@@ -26,7 +34,7 @@ class Home extends Component {
     }
     handleForm = (e) => {
         e.preventDefault();
-      let d = new Date();
+        let d = new Date();
         let yesterday = this.state.yesterday;
         let today = this.state.today;
         let problems = this.state.problems;
@@ -38,13 +46,14 @@ class Home extends Component {
             yesterday: yesterday,
             today: today,
             problems: problems,
-            date : date,
-            email : email
+            date: date,
+            email: email
         }
         console.log('obj', obj);
         this.props.HomeData(obj);
-        this.setState({yesterday : '', today :'', problems:'' , date : ''})
-        
+          this.setState({yesterday:'', today:'', problems:'', date:'' })
+
+
 
     }
 
@@ -70,11 +79,7 @@ class Home extends Component {
                             <Title>Answers Please</Title>
                         </Body>
                         <Right >
-                             <Button 
-                             onPress={() => Actions.viewUserDetCon()}
-                             style ={{backgroundColor:'transparent',height: 30}}
-                             light><Text> View Ans </Text></Button>
-                              </Right>
+                        </Right>
                     </Header>
                     <Form>
 
@@ -110,7 +115,7 @@ class Home extends Component {
 
                             />
                         </Item>
-                         <DatePicker
+                        <DatePicker
                             style={{ width: 350, marginTop: 20 }}
                             date={this.state.date}
                             mode="date"
@@ -119,7 +124,7 @@ class Home extends Component {
                             placeholder="select date"
                             format="YYYY.DD.MM"
                             minDate={new Date()}
-                               maxDate={new Date()}
+                            maxDate={new Date()}
                             confirmBtnText="Confirm"
                             cancelBtnText="Cancel"
                             customStyles={{
@@ -132,7 +137,7 @@ class Home extends Component {
                                 dateInput: {
                                     marginLeft: 36
                                 }
-                    
+
                             }}
                             value={this.state.value}
                             onDateChange={(date) => { this.setState({ date: date }) }}
@@ -145,9 +150,23 @@ class Home extends Component {
                             <Text>Submit</Text>
                         </Button>
                     </Form>
+                    <Footer style = {{marginTop : 30 }}>
 
-
-
+                        <FooterTab>
+                            <Button vertical>
+                                <Icon
+                                    onPress={this.logOut}
+                                    name="person" />
+                                <Text>Log Out</Text>
+                            </Button>
+                             <Button vertical>
+              <Icon 
+               onPress={() => Actions.viewUserDetCon()}
+                   name="apps" />
+              <Text>View Ans</Text>
+            </Button>
+                        </FooterTab>
+                    </Footer>
 
 
                 </Content>
@@ -171,7 +190,7 @@ const styles = StyleSheet.create({
     },
     btn: {
         width: 300,
-        marginTop: 150,
+        marginTop: 80,
         marginLeft: 22,
         backgroundColor: '#1eb3cd',
     },
