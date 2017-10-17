@@ -24,50 +24,28 @@ class ViewAllUserDetail extends Component {
         let email = this.props.Email;
         console.log('email :', email)
         this.props.AllUserDetailData()
-        console.log('detail : ', this.props.AllUserDetailData())
 
     }
 
 
 
     render() {
-        const Details = this.props.AllDetail ? this.props.AllDetail : []
-        console.log('details : ', Details)
+       
+        const Details = this.props.AllDetail  ? this.props.AllDetail : [] 
+        console.log("render detail",Details)
+
         return (
             <Container>
                 <Content>
-                     <ScrollView>
                     {
 
 
                         Details.map((item, i) => {
                             return (
                                
-                                    <Card style={{ flex: 1 }}>
-                                        <CardItem   >
-                                            <List key={i+1} >
-                                                 <ListItem>
-                                                    <Text style={{ color: '#88FF00' }} >Email  :</Text><Text>{item.email}</Text>
-
-                                                </ListItem>
-                                                <ListItem>
-                                                    <Text style={{ color: '#88FF00' }} >Yesterday  :</Text><Text>{item.yesterday}</Text>
-
-                                                </ListItem>
-                                                <ListItem>
-                                                    <Text style={{ color: '#88FF00' }}>Today  :</Text><Text>{item.today}</Text>
-
-                                                </ListItem>
-
-
-                                                <ListItem>
-                                                    <Text style={{ color: '#88FF00' }}>Problems  :</Text><Text>{item.problems}</Text>
-                                                </ListItem>
-                                                  <ListItem>
-                                                    <Text style={{ color: '#88FF00' }}>Date :</Text><Text>{item.date}</Text>
-                                                </ListItem>
-
-                                            </List>
+                                    <Card key={i} style={{ flex: 1 }}>
+                                        <CardItem>
+                                           <Text> {item.email}</Text>
                                         </CardItem>
                                     </Card>
 
@@ -77,9 +55,10 @@ class ViewAllUserDetail extends Component {
                             )
                         })
                     }
-                    </ScrollView>
-                      <Footer>
-          <FooterTab>
+                   
+                  </Content>
+                  <Footer>
+          <FooterTab style = {{ backgroundColor: '#CC1D1D', }}>
             <Button vertical>
               <Icon
               onPress = {this.logOut}
@@ -88,9 +67,6 @@ class ViewAllUserDetail extends Component {
             </Button>
           </FooterTab>
         </Footer>
-
-
-                </Content>
             </Container>
         )
     }

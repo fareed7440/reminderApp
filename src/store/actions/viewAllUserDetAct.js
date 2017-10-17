@@ -1,27 +1,25 @@
 import ActionTypes from "./actionTypes"
 import { Actions } from 'react-native-router-flux';
 import * as DB from '../../firebase/database'
-
+import firebase from "firebase"
 function allUserDetailRequest(data){
     console.log('datataa',data)
      
     return dispatch=>{
 dispatch(AllUserDetailRequest());
-  return DB.database.ref('Detail').on('value', snap => {
-            const todo = [];
-            snap.forEach(childSnapshot => {
-                var innerTodo = childSnapshot.val();
-                innerTodo.key = childSnapshot.key;
-                if (childSnapshot.hasChild('comments')) {
-                    var customComments = Object.keys(childSnapshot.val().comments).map(key => { return { key: childSnapshot.val().comments[key] } })
-                    console.log(customComments);
-                    innerTodo.comments = customComments;
-                    todo.push(innerTodo);
-                } else {
-                    todo.push(innerTodo);
-                }
-            })
-            dispatch(AllUserDetailRequestSuccess(todo))
+let fireBaseUser = firebase.auth().currentUser.uid;
+  return DB.database.ref('Detail/').on('value', snap => {
+            var data = snap.val();
+            console.log("data",data);
+            // console.log("uid",firebase.auth().currentUser.uid);
+            var mData = [];
+            for (let key in data) {
+                data[key].key=key
+                mData.push(data[key])
+                
+            }
+            console.log("madata",mData)
+            dispatch(AllUserDetailRequestSuccess(mData))
         });
     }
 

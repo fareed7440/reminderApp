@@ -60,31 +60,14 @@ this.state = {
 
     render() {
         return (
-            <Image
-                source={require('../images/mm.png')}
+           <Container
                 style={styles.container}>
                 <Content>
-                    <Header style={styles.hdr} >
-                        <Left
-
-
-                        >
-                            <Button transparent>
-                                <Icon name="ios-arrow-back"
-                                    onPress={() => Actions.signupCon()}
-                                />
-                            </Button>
-                        </Left>
-                        <Body>
-                            <Title>Answers Please</Title>
-                        </Body>
-                        <Right >
-                        </Right>
-                    </Header>
+                      <Text style={{ fontFamily: 'sans-serif-condensed', alignSelf:'center',marginTop :15, fontSize:24,color:'#FFFFFF' }}>Answers Please ?</Text>
                     <Form>
 
                         <Item floatingLabel>
-                            <Label style={{ color: 'red' }}>What you have done yesterday ?</Label>
+                            <Label style={{color:'#FFFFFF'}}>What you have done yesterday ?</Label>
                             <Input
                                 style={styles.inpt}
                                 value={this.state.value}
@@ -94,7 +77,7 @@ this.state = {
                             />
                         </Item>
                         <Item floatingLabel>
-                            <Label style={{ color: 'red' }}>What you will be doing today ? </Label>
+                            <Label style={{color:'#FFFFFF'}}>What you will be doing today ? </Label>
                             <Input
 
                                 style={styles.inpt}
@@ -105,7 +88,7 @@ this.state = {
                             />
                         </Item>
                         <Item floatingLabel last>
-                            <Label style={{ color: 'red' }}>What are the problems you have faced ? </Label>
+                            <Label style={{color:'#FFFFFF'}}>What are the problems you have faced ? </Label>
                             <Input
 
                                 style={styles.inpt}
@@ -147,12 +130,13 @@ this.state = {
                             onPress={this.handleForm}
 
                             style={styles.btn} full success>
-                            <Text>Submit</Text>
+                            <Text style={{color:'#FFFFFF'}}>Submit</Text>
                         </Button>
                     </Form>
-                    <Footer style = {{marginTop : 30 }}>
+                     </Content>
+                    <Footer>
 
-                        <FooterTab>
+                        <FooterTab style = {{ backgroundColor: '#CC1D1D', }}>
                             <Button vertical>
                                 <Icon
                                     onPress={this.logOut}
@@ -169,8 +153,8 @@ this.state = {
                     </Footer>
 
 
-                </Content>
-            </Image>
+               
+            </Container>
         )
     }
 }
@@ -190,9 +174,9 @@ const styles = StyleSheet.create({
     },
     btn: {
         width: 300,
-        marginTop: 80,
-        marginLeft: 22,
-        backgroundColor: '#1eb3cd',
+        marginTop: 30,
+        marginLeft: 38,
+        backgroundColor: '#CC1D1D',
     },
     inpt: {
         width: 200,
@@ -217,12 +201,7 @@ const styles = StyleSheet.create({
         borderWidth: 2,
         borderColor: '#00ff00',
     }, container: {
-        flex: 1,
-        width: undefined,
-        height: undefined,
-        backgroundColor: 'transparent',
-        justifyContent: 'center',
-        alignItems: 'center',
+      backgroundColor: '#E43F3F',
     },
 
 });

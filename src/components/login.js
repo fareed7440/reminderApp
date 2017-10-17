@@ -40,30 +40,14 @@ class Login extends Component {
 
     render() {
         return (
-            <Image
-        source={require('../images/1.png')}
+            <Container
         style={styles.container}>
                 <Content>
-                    <Header  style={styles.hdr} >
-                        <Left
-                        
-                        
-                        >
-                            <Button transparent>
-                                 <Icon name="ios-arrow-back" 
-                                  onPress={() => Actions.signupCon()}
-                                 />
-                            </Button>
-                        </Left>
-                        <Body>
-                            <Title>LOGIN PAGE</Title>
-                        </Body>
-                        <Right />
-                    </Header>
+                    <Text style={{ fontFamily: 'sans-serif-condensed', alignSelf:'center',marginTop :15, fontSize:20,color:'#FFFFFF' }}>Login</Text>
                     <Form>
 
                         <Item floatingLabel>
-                            <Label>Email</Label>
+                            <Label style={{color:'#FFFFFF'}}>Email</Label>
                             <Input
                            style={styles.inpt}
                                 value={this.state.value}
@@ -73,7 +57,7 @@ class Login extends Component {
                              />
                         </Item>
                         <Item floatingLabel last>
-                            <Label>Password</Label>
+                            <Label style={{color:'#FFFFFF'}}>Password</Label>
                             <Input
                                 secureTextEntry
                                 style={styles.inpt}
@@ -88,16 +72,22 @@ class Login extends Component {
                         onPress={this.handleForm}
                         
                          style={styles.btn} full success>
-                            <Text>Login</Text>
+                            <Text style={{color:'#FFFFFF'}}>Login</Text>
                         </Button>
                     </Form>
+                    <View  >
+
+                        <Text style={styles.txt}> To Register ? <Text onPress={() => Actions.signupCon()} style={{ color: '#1eb3cd' }}>Sign up</Text></Text>
+
+                    </View>
 
 
 
 
 
                 </Content>
-            </Image>
+            </Container>
+          
         )
     }
 }
@@ -116,10 +106,10 @@ const styles = StyleSheet.create({
         color: 'red',
     },
 btn : {
-    width :300,
-    marginTop:150,
-    marginLeft: 22,
-     backgroundColor: '#1eb3cd',
+      width: 300,
+        marginTop: 30,
+        marginLeft: 38,
+        backgroundColor: '#CC1D1D',
 }, 
 inpt : {
     width:200,
@@ -144,12 +134,12 @@ inpt : {
     borderWidth: 2,
     borderColor: '#00ff00',
   },container: {
-    flex: 1,
-    width: undefined,
-    height: undefined,
-    backgroundColor:'transparent',
-    justifyContent: 'center',
-    alignItems: 'center',
+    backgroundColor: '#E43F3F',
   },
+ txt: {
+        color: 'white',
+        marginLeft: 80,
+        marginTop: 20
+    },
 
 });

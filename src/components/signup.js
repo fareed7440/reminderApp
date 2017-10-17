@@ -40,30 +40,13 @@ class Signup extends Component {
 
     render() {
         return (
-            <Image
-                source={require('../images/1.png')}
+            <Container
                 style={styles.container}>
                 <Content>
-                    <Header style={styles.hdr} >
-                        <Left
-
-
-                        >
-                            <Button transparent>
-                                <Icon name="ios-arrow-back"
-                                    onPress={() => Actions.loginCon()}
-
-                                />
-                            </Button>
-                        </Left>
-                        <Body>
-                            <Title>SIGNUP PAGE</Title>
-                        </Body>
-                        <Right />
-                    </Header>
+                    <Text style={{ fontFamily: 'sans-serif-condensed', alignSelf:'center',marginTop :15, fontSize:20,color:'#FFFFFF' }}>Signup</Text>
                     <Form onSubmit={this.handleForm}>
                         <Item floatingLabel>
-                            <Label>Username</Label>
+                            <Label style={{color:'#FFFFFF'}}>Username</Label>
                             <Input
                                 style={styles.inpt}
                                 value={this.state.value}
@@ -73,7 +56,7 @@ class Signup extends Component {
                         </Item>
 
                         <Item floatingLabel>
-                            <Label>Useremail</Label>
+                            <Label  style={{color:'#FFFFFF'}}>Useremail</Label>
                             <Input
 
                                 style={styles.inpt}
@@ -83,7 +66,7 @@ class Signup extends Component {
                             />
                         </Item>
                         <Item floatingLabel last>
-                            <Label>Password</Label>
+                            <Label  style={{color:'#FFFFFF'}}>Password</Label>
                             <Input
 
                                 secureTextEntry
@@ -94,7 +77,7 @@ class Signup extends Component {
                             />
                         </Item>
                         <Item floatingLabel last>
-                            <Label>Confirm Password</Label>
+                            <Label  style={{color:'#FFFFFF'}}>Confirm Password</Label>
                             <Input
                                 secureTextEntry
                                 style={styles.inpt}
@@ -108,7 +91,7 @@ class Signup extends Component {
                             type='submit'
                             onPress={this.handleForm}
                             style={styles.btn} full success>
-                            <Text>sign up</Text>
+                            <Text style={{color:'#FFFFFF'}}>sign up</Text>
                         </Button>
                     </Form>
                     <View  >
@@ -118,7 +101,7 @@ class Signup extends Component {
                     </View>
 
                 </Content>
-            </Image>
+            </Container>
         )
     }
 }
@@ -139,18 +122,15 @@ const styles = StyleSheet.create({
     btn: {
         width: 300,
         marginTop: 30,
-        marginLeft: 22,
-        backgroundColor: '#1eb3cd',
+        marginLeft: 38,
+        backgroundColor: '#CC1D1D',
     },
     inpt: {
-        width: 200,
-        height: 60,
+        //width: 140,
+        height: 50,
         backgroundColor: 'transparent',
         color: 'white',
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-
+       alignSelf:'center'
 
 
     },
@@ -170,12 +150,14 @@ const styles = StyleSheet.create({
         marginLeft: 80,
         marginTop: 20
     }, container: {
-        flex: 1,
-        width: undefined,
-        height: undefined,
-        backgroundColor: 'transparent',
-        justifyContent: 'center',
-        alignItems: 'center',
+
+        backgroundColor: '#E43F3F',
+        // flex: 1,
+        // width: undefined,
+        // height: undefined,
+        // backgroundColor: 'transparent',
+        // justifyContent: 'center',
+        // alignItems: 'center',
     },
 
 });
