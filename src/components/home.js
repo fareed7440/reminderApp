@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Container, Header, Content, Form, Item, Input, Footer, FooterTab, Label, Body, Button, Left, Title, Right, Icon, View } from 'native-base';
-import { StyleSheet, Text, Image } from 'react-native';
+import { StyleSheet, Text, Image,ToastAndroid } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import DatePicker from 'react-native-datepicker';
 import firebase from 'firebase'
@@ -33,6 +33,11 @@ this.state = {
 
     }
     handleForm = (e) => {
+        if(!this.state.yesterday ||!this.state.today||!this.state.date || !this.state.problems){
+            ToastAndroid.show(
+                'please insert filed',ToastAndroid.SHORT
+            )
+        } else{
         e.preventDefault();
         let d = new Date();
         let yesterday = this.state.yesterday;
@@ -55,6 +60,7 @@ this.state = {
 
 
 
+    }
     }
 
 
