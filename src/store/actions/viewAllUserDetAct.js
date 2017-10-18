@@ -8,7 +8,7 @@ function allUserDetailRequest(data){
     return dispatch=>{
 dispatch(AllUserDetailRequest());
 let fireBaseUser = firebase.auth().currentUser.uid;
-  return DB.database.ref('Detail/').on('value', snap => {
+  return DB.database.ref('signupUser/').on('value', snap => {
             var data = snap.val();
             console.log("data",data);
             // console.log("uid",firebase.auth().currentUser.uid);

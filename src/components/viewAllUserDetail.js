@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Container, Header, Content, Form, Item, Input, Label,Footer, FooterTab, Body, Button, Left, Card,CardItem,Title,List,ListItem, Right, Icon, View } from 'native-base';
-import { StyleSheet, Text, Image ,ScrollView} from 'react-native';
+import { StyleSheet, Text, Image ,ScrollView,TouchableOpacity} from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import firebase from 'firebase'
 class ViewAllUserDetail extends Component {
@@ -9,6 +9,7 @@ class ViewAllUserDetail extends Component {
         this.state = {
         }
         this.logOut = this.logOut.bind(this);
+         this.getEmail = this.getEmail.bind(this);
     }
 
     logOut(){
@@ -27,6 +28,13 @@ class ViewAllUserDetail extends Component {
 
     }
 
+    getEmail(email){
+        Actions.userProfileCon()
+        this.props.email(email)
+        
+
+    }
+
 
 
     render() {
@@ -42,12 +50,14 @@ class ViewAllUserDetail extends Component {
 
                         Details.map((item, i) => {
                             return (
-                               
-                                    <Card key={i} style={{ flex: 1 }}>
+                               <TouchableOpacity  onPress={() =>Actions.userProfileCon({email :item.email})}>
+                                    <Card 
+                                     key={i} style={{ flex: 1 }}>
                                         <CardItem>
                                            <Text> {item.email}</Text>
                                         </CardItem>
                                     </Card>
+                                    </TouchableOpacity>
 
                                 
                                   

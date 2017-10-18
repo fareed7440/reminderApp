@@ -6,9 +6,9 @@ function homeRequest(data){
     console.log('datataa',data)
     return dispatch=>{
 dispatch(HomeRequest());
-let fireBaseUser = firebase.auth().currentUser.uid;
-console.log('curent user',fireBaseUser);
-return DB.database.ref(`/Detail/${fireBaseUser}`).push(data,function(err){
+//let fireBaseUser = firebase.auth().currentUser.uid;
+//console.log('curent user',fireBaseUser);
+return DB.database.ref('/Detail/').push(data,function(err){
    if(err){
        alert(err)
    }

@@ -1,6 +1,7 @@
 import ViewAllUserDetail from '../components/viewAllUserDetail'
 import {connect} from 'react-redux'
 import allUserDetailRequest from '../store/actions/viewAllUserDetAct'
+import userProfileRequest  from '../store/actions/userProfileAct'
 function mapStateToProps(state){
     console.log(state)
     return{
@@ -13,7 +14,8 @@ function mapStateToProps(state){
 function mapDispatchToProps(dispatch){
 return{
    
- AllUserDetailData : (data)=>dispatch(allUserDetailRequest(data))
+ AllUserDetailData : (data)=>dispatch(allUserDetailRequest(data)),
+ email : (email)=>dispatch(userProfileRequest(email))
 }
 }
 
